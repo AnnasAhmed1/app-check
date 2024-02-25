@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 const About = () => {
   useEffect(() => {
     const openAppOrStore = async () => {
-      const appScheme = "thehuntrpartner://"; // Replace with your app's scheme
+      const appScheme = "candycrushsaga://"; // Replace with your app's scheme
 
       try {
         // Attempt to open the app
