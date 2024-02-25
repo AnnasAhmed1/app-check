@@ -10,16 +10,18 @@ const About = () => {
       try {
         // Attempt to open the app
         await fetch(appScheme, { method: "HEAD" });
-        window.location.href = appScheme; // If successful, open the app
+        alert("app install");
+        // window.location.href = appScheme; // If successful, open the app
         console.log("Opening 1");
       } catch (error) {
+        alert("app not install");
         // If an error occurs, the app is not installed
         // Redirect to the app store or a web URL
         console.log("Opening 2");
-        window.open(
-          "https://play.google.com/store/apps/details?id=com.thehuntrpartner",
-          "_blank"
-        ); // Replace with your app's App Store URL
+        // window.open(
+        //   "https://play.google.com/store/apps/details?id=com.thehuntrpartner",
+        //   "_blank"
+        // ); // Replace with your app's App Store URL
       }
     };
 
