@@ -1,46 +1,29 @@
 "use client";
+import { useEffect } from "react";
 
-import React, { useEffect } from "react";
-
-const About = () => {
+const MyAppComponent = () => {
   useEffect(() => {
-    const openAppOrStore = async () => {
-      const appScheme = "candycrushsaga://"; // Replace with your app's scheme
+    const checkWhatsAppInstalled = () => {
+      // Attempt to open WhatsApp using its custom scheme
+      window.location.href = "whatsapp://";
 
-      try {
-        // Attempt to open the app
-        await fetch(appScheme, { method: "HEAD" });
-        alert("app install");
-        // window.location.href = appScheme; // If successful, open the app
-        console.log("Opening 1");
-      } catch (error) {
-        alert("app not install");
-        // If an error occurs, the app is not installed
-        // Redirect to the app store or a web URL
-        console.log("Opening 2");
-        // window.open(
-        //   "https://play.google.com/store/apps/details?id=com.thehuntrpartner",
-        //   "_blank"
-        // ); // Replace with your app's App Store URL
-      }
+      // Set a timeout to detect if WhatsApp was opened
+      const whatsappOpenTimeout = setTimeout(() => {
+        // If WhatsApp wasn't opened, redirect to the Play Store
+        window.location.href =
+          "https://play.google.com/store/apps/details?id=com.whatsapp";
+      }, 2000); // Adjust the timeout as needed
+
+      // Detect if WhatsApp was opened successfully
+      window.addEventListener("pagehide", () => {
+        clearTimeout(whatsappOpenTimeout);
+      });
     };
 
-    openAppOrStore();
+    checkWhatsAppInstalled();
   }, []);
 
-  //   useEffect(() => {
-  //     setTimeout(function () {
-  //       console.log(
-  //         window.open(
-  //           "https://play.google.com/store/apps/details?id=com.thehuntrpartner",
-  //           "_blank"
-  //         ),
-  //         "1"
-  //       );
-  //     }, 25);
-  //     console.log(window.open(`thehuntrpartner://place/1`, "_blank"), "2");
-  //   }, []);
-  return <div>About</div>;
+  return <div>{/* Your component JSX */}</div>;
 };
 
-export default About;
+export default MyAppComponent;
