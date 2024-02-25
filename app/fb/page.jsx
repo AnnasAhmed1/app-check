@@ -3,24 +3,26 @@ import { useEffect } from "react";
 
 const MyAppComponent = () => {
   useEffect(() => {
-    const checkWhatsAppInstalled = () => {
-      // Attempt to open WhatsApp using its custom scheme
-      window.location.href = "fb://";
+    const checkFacebookInstalled = () => {
+      // Attempt to open Facebook using its custom scheme
+      window.href = "fb://";
 
-      // Set a timeout to detect if WhatsApp was opened
-      const whatsappOpenTimeout = setTimeout(() => {
-        // If WhatsApp wasn't opened, redirect to the Play Store
-        window.location.href =
-          "https://play.google.com/store/apps/details?id=com.facebook.katana";
+      // Set a timeout to detect if Facebook was opened
+      const facebookOpenTimeout = setTimeout(() => {
+        // If Facebook wasn't opened, redirect to the Play Store
+        window.open(
+          "https://play.google.com/store/apps/details?id=com.facebook.katana",
+          "_blank"
+        );
       }, 2000); // Adjust the timeout as needed
 
-      // Detect if WhatsApp was opened successfully
+      // Detect if Facebook was opened successfully
       window.addEventListener("pagehide", () => {
-        clearTimeout(whatsappOpenTimeout);
+        clearTimeout(facebookOpenTimeout);
       });
     };
 
-    checkWhatsAppInstalled();
+    checkFacebookInstalled();
   }, []);
 
   return <div>{/* Your component JSX */}</div>;
