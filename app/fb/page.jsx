@@ -5,7 +5,7 @@ const MyAppComponent = () => {
   useEffect(() => {
     const checkFacebookInstalled = () => {
       // Attempt to open Facebook using its custom scheme
-      window.href = "fb://";
+      window.location.href = `thehuntr://`;
 
       // Set a timeout to detect if Facebook was opened
       const facebookOpenTimeout = setTimeout(() => {
